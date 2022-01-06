@@ -16,7 +16,13 @@ const actions = {
     FETCH_BOARD ({commit} , {id}) {
         return api.board.fetch(id)
                 .then((data) => commit('SET_BOARD', data.item))
+    },
+    ADD_CARD(ctx, {title, listId, pos}) {
+        return api.card.created(title, listId, pos)
+        .then(() => ctx.dispatch('FETCH_BOARD', {id: ctx.state.board.id}))
     }
 }
 
 export default actions
+
+//ctx = context
