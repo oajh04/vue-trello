@@ -17,9 +17,12 @@ const mutations = {
         setAuthInHeader(token)
     },
     LOGOUT(state){
-        state.token = null
+        state.token = null 
         delete localStorage.token
         setAuthInHeader(null)
+    },
+    SET_CARD(state, card){
+        state.card = card
     }
 }
 
