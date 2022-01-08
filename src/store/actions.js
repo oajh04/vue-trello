@@ -24,6 +24,10 @@ const actions = {
     FETCH_CARD(ctx, {id}){
         return api.card.fetch(id)
         .then((data) => ctx.commit('SET_CARD', data.item))
+    },
+    UPDATE_CARD(ctx, {id, title, description, pos, listId}){
+        return api.card.update(id, {title, description, pos, listId})
+        .then(() => ctx.commit('FETCH_BOARD', {id: ctx.state.board.id}))
     }
 }
 
